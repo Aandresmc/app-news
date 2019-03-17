@@ -1,0 +1,16 @@
+.welcome-card ion-img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+#home{
+  border-bottom-style: solid!important;
+  border-color: var( --ion-color-light ) !important;
+}
+
+ion-fab-button#fabButton {
+  border-style: solid!important;
+  border-color: var( --ion-color-light ) !important;
+  border-radius: 45px!important;
+  box-shadow: 2px 4px 6px var(--ion-color-dark) !important
+}

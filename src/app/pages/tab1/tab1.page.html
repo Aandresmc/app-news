@@ -1,0 +1,51 @@
+<ion-header  id="home">
+  <ion-toolbar color="dark">
+    <ion-buttons *ngIf="!verSearch" slot="start">
+    </ion-buttons>
+    <ion-title *ngIf="!verSearch" text-center> News App</ion-title>
+    <ion-buttons slot="end" *ngIf="!verSearch">
+      <ion-button (click)="activeSearch()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar *ngIf="verSearch" class="slideInRight" type="text" animated debounce="500" showCancelButton
+      cancelButtonText='cancelar' placeholder="Buscar Noticias ..." #searchbar (keyup)="buscarNoticia(searchbar.value)"
+      (ionCancel)="verSearch=false;cargarNoticias();"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-fab *ngIf="!verSearch" horizontal="end" vertical="top" slot="fixed" edge=""
+    class="fab-horizontal-start fab-vertical-top fab-edge hydrated">
+    <ion-fab-button id="fabButton" color="dark" class="ion-activatable ion-focusable hydrated">
+      <ion-icon name="list" role="img" class="hydrated" aria-label="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list class="fab-list-side-bottom hydrated">
+      <ion-fab-button color="light"
+        class="ion-color ion-color-light fab-button-in-list ion-activatable ion-focusable hydrated">
+        <ion-icon name="logo-github"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light"
+        class="ion-color ion-color-light fab-button-in-list ion-activatable ion-focusable hydrated">
+        <ion-icon name="logo-android"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light"
+        class="ion-color ion-color-light fab-button-in-list ion-activatable ion-focusable hydrated" (click)="menu()">
+        <ion-icon name="logo-facebook" role="img" class="hydrated" aria-label="logo facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-refresher (ionRefresh)="clearCache($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <app-noticias [noticias]="noticias"></app-noticias>
+
+  <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData( $event )">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando ...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
