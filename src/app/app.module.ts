@@ -18,6 +18,8 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { IonicImageLoader } from 'ionic-image-loader';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -31,6 +33,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
     HttpClientModule,
     IonicStorageModule.forRoot(),
     IonicImageLoader.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,

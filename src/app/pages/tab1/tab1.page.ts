@@ -102,7 +102,7 @@ export class Tab1Page implements OnInit {
   menu(button){
     let fb = 'https://www.facebook.com/Aandresmc'
     let github = 'https://github.com/Aandresmc/app-news'
-    let android = '' 
+    let android = 'http://www.mediafire.com/file/sczin0i5c4r9ro5/newsapp.apk/file' 
     let pagina = ''
 
     switch(button) { 
